@@ -27,11 +27,11 @@ if __name__ == "__main__":
     logging.info("raspberry_identifier: " + raspberry_identifier)
     db_configs = __read_db_properties__()
     db = Postgres(
-        db_url=db_configs.get('DB_URL'),
-        db_user=db_configs.get('DB_USER'),
-        db_password=db_configs.get('DB_PASSWORD'),
-        db_name=db_configs.get('DB_NAME'),
-        db_schema=db_configs.get('DB_SCHEMA')
+        db_url=db_configs.get('DB_URL')[0],
+        db_user=db_configs.get('DB_USER')[0],
+        db_password=db_configs.get('DB_PASSWORD')[0],
+        db_name=db_configs.get('DB_NAME')[0],
+        db_schema=db_configs.get('DB_SCHEMA')[0]
     )
     ms = MainService(raspberry_identifier, db)
     ms.start_reading_sensors()
